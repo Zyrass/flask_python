@@ -1,0 +1,39 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <!-- Inclure ici les balises <link> et autres balises <meta> communes à toutes les pages -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <header>
+            <nav>
+                {% if session.get('logged_in') %}
+                <a href="{{ url_for('get_fruits') }}">JSON fruits</a>
+                <a href="{{ url_for('home') }}">Accueil</a>
+                <a href="{{ url_for('profile') }}">Profile</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('home') }}">Accueil</a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main>{% block content %} {% endblock %}</main>
+
+        <footer>
+            <span>&copy; Copyright 2023</span>
+            <span>By Alain Guillon</span>
+        </footer>
+
+        <!-- Inclure ici les balises <script> communes à toutes les pages -->
+        <!-- par exemple : -->
+        <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+    </body>
+</html>

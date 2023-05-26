@@ -1,0 +1,34 @@
+{% extends 'layout.html' %} {% block content %}
+<h1>Profile</h1>
+<h2>Add a fruit</h2>
+<form method="post" action="{{ url_for('add_fruit') }}">
+    <label for="fruit_name">Fruit name:</label><br />
+    <input type="text" id="fruit_name" name="fruit_name" /><br />
+    <label for="fruit_price">Fruit price:</label><br />
+    <input type="text" id="fruit_price" name="fruit_price" /><br />
+    <input type="submit" value="Add" />
+</form>
+
+<h2>Update a fruit</h2>
+<form method="post" action="{{ url_for('update_fruit') }}">
+    <label for="fruit_id">Fruit ID:</label><br />
+    <input type="text" id="fruit_id" name="fruit_id" /><br />
+    <label for="new_price">New price:</label><br />
+    <input type="text" id="new_price" name="new_price" /><br />
+    <input type="submit" value="Update" />
+</form>
+
+<h2>Delete a fruit</h2>
+<form method="post" action="{{ url_for('delete_fruit') }}">
+    <label for="fruit_id">Fruit ID:</label><br />
+    <input type="text" id="fruit_id" name="fruit_id" /><br />
+    <input type="submit" value="Delete" />
+</form>
+
+<aside>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="flashes alert {{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
+</aside>
+{% endblock %}

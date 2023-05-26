@@ -1,0 +1,28 @@
+{% extends 'layout.html' %} {% block content %}
+<h1>Produits Locaux</h1>
+
+{% if fruits %}
+<table>
+    <caption>
+        description des produits locauw actuellement disponible
+    </caption>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOM</th>
+            <th>PRIX</th>
+        </tr>
+    </thead>
+    <tbody id="fruits-list">
+        {% for fruit in fruits %}
+        <tr>
+            <td>{{ fruit.id }}</td>
+            <td>{{ fruit.name }}</td>
+            <td>{{ fruit.price }}€</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Il n'y a aucun fruit à afficher</p>
+{% endif %} {% endblock %}
